@@ -23,38 +23,28 @@ app.get("/", (req, res) => {
     res.send("Hello world");
 });
 
-const subDatabase = {};
+const subDatabase = [];
 
 app.post("/save-subscription", (req, res) => {
-    const { userId, subscription } = req.body;
-    if (userId && subscription) {
-        subDatabase[userId] = subscription;
-        res.json({ status: "Success", message: "Subscription saved!" });
-    } else {
-        res.status(400).json({ status: "Error", message: "Missing user ID or subscription data" });
-    }
+    subDatabase.push(req.body);
+    res.json({ status: "Success", message: "Subscription saved!" });
 });
 
-// Function to send notifications to a specific user
-function sendNotificationToUser(userId, message) {
-    const subscription = subDatabase[userId];
-    if (subscription) {
+// Function to send notifications to all subscribers
+function sendNotificationToAllSubscribers(message) {
+    subDatabase.forEach(subscription => {
         webpush.sendNotification(subscription, message)
             .catch(error => {
                 console.error("Error sending notification:", error);
             });
-    }
+    });
 }
 
-// Route to handle sending push notification to a specific user
+// Route to handle sending push notification triggered by button click
 app.post("/send-notification", (req, res) => {
-    const { userId, message } = req.body;
-    if (userId && message) {
-        sendNotificationToUser(userId, message);
-        res.json({ status: "Success", message: "Notification sent!" });
-    } else {
-        res.status(400).json({ status: "Error", message: "Missing user ID or message" });
-    }
+    const { message } = req.body;
+    sendNotificationToAllSubscribers(message);
+    res.json({ status: "Success", message: "Notification sent!" });
 });
 
 // Trigger the function when the server starts
