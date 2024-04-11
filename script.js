@@ -46,7 +46,7 @@ const login = () => {
 
 const sendNotification = async () => {
     // Send notification manually
-    const response = await fetch('https://notification-tydq.onrender.com/send-notification', {
+    const response = await fetch('https://notification-fwwv.onrender.com/send-notification', {
         method: 'post',
         headers: { 'Content-type': "application/json" },
         body: JSON.stringify({ message: "New Notice from EdConnect Noticeboard!" })
@@ -72,7 +72,7 @@ const urlBase64ToUint8Array = base64String => {
 };
 
 const saveSubscription = async (subscription) => {
-    const response = await fetch('https://notification-tydq.onrender.comsave-subscription', {
+    const response = await fetch('https://notification-fwwv.onrender.com/save-subscription', {
         method: 'post',
         headers: { 'Content-type': "application/json" },
         body: JSON.stringify(subscription)
