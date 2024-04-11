@@ -26,6 +26,23 @@ const enableNotifications = async () => {
     await registerSW();
 };
 
+const showLoginForm = () => {
+    document.getElementById('enableNotificationsBtn').style.display = 'none';
+    document.getElementById('isAdminBtn').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'block';
+};
+
+const login = () => {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'gundeep' && password === 'qwerty') {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('sendNotificationBtn').style.display = 'block';
+    } else {
+        alert('Invalid username or password');
+    }
+};
 
 const sendNotification = async () => {
     // Send notification manually
