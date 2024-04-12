@@ -55,6 +55,19 @@ const sendNotification = async () => {
     console.log(result);
 };
 
+const saveSubscription = async (subscription) => {
+    // Get existing subscriptions from local storage
+    let subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
+    
+    // Add the new subscription to the array
+    subscriptions.push(subscription);
+    
+    // Save the updated subscriptions array back to local storage
+    localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
+    
+    return Promise.resolve({ status: "Success", message: "Subscription saved!" });
+};
+
 const urlBase64ToUint8Array = base64String => {
     const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
     const base64 = (base64String + padding)
@@ -69,16 +82,6 @@ const urlBase64ToUint8Array = base64String => {
     }
 
     return outputArray;
-};
-
-const saveSubscription = async (subscription) => {
-    const response = await fetch('https://notification-fwwv.onrender.com/save-subscription', {
-        method: 'post',
-        headers: { 'Content-type': "application/json" },
-        body: JSON.stringify(subscription)
-    });
-
-    return response.json();
 };
 
 self.addEventListener("activate", async (e) => {
