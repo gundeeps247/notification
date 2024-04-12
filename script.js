@@ -46,7 +46,7 @@ const login = () => {
 
 const sendNotification = async () => {
     // Send notification manually
-    const response = await fetch('https://notification-fwwv.onrender.com/send-notification', {
+    const response = await fetch('https://notification-3vjn.onrender.coms/end-notification', {
         method: 'post',
         headers: { 'Content-type': "application/json" },
         body: JSON.stringify({ message: "New Notice from EdConnect Noticeboard!" })
