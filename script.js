@@ -46,7 +46,7 @@ const login = () => {
 
 const sendNotification = async () => {
     // Send notification manually
-    const response = await fetch('https://notification-qw62.onrender.com/send-notification', {
+    const response = await fetch('https://notification-sage.vercel.app/send-notification', {
         method: 'post',
         headers: { 'Content-type': "application/json" },
         body: JSON.stringify({ message: "New Notice from EdConnect Noticeboard!" })
