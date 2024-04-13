@@ -14,7 +14,7 @@ const urlBase64ToUint8Array = base64String => {
     return outputArray;
   }
   const saveSubscription = async (subscription) => {
-    const response = await fetch('https://notification-dz9e.onrender.com/save-subscription', {
+    const response = await fetch('https://notification-tznv.onrender.com/save-subscription', {
       method: 'post',
       headers: { 'Content-type': "application/json" },
       body: JSON.stringify(subscription)

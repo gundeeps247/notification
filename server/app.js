@@ -18,7 +18,7 @@ webpush.setVapidDetails(
 );
 
 const corsOptions = {
-    origin: 'https://notification-lovat-ten.vercel.app', // Replace with your frontend origin
+    origin: 'notification-psi-virid.vercel.app', // Replace with your frontend origin
   };
   
   app.use(cors(corsOptions));
