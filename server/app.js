@@ -17,7 +17,8 @@ async function connectToDb() {
   
   connectToDb(); // Call the connect function on app startup
   
-  app.get("/", (req, res) => {
+  
+app.get("/", (req, res) => {
     res.send("Hello world");
   });
   
@@ -56,6 +57,6 @@ async function connectToDb() {
   });
   
   app.listen(port, () => {
-    console.log("Server running on port 3000!");
+    console.log(`Server running on port ${port}!`);
   });
   
