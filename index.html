@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <button id="enableNotificationsBtn" onclick="enableNotifications()">Enable notifications</button>
-    <button id="isAdminBtn" onclick="showLoginForm()">Is Admin</button>
-    
-    <div id="loginForm" style="display:none;">
-        <input type="text" id="username" placeholder="Username" autocomplete="username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-    </div>
+  <button id="enableNotificationsBtn" onclick="enableNotifications()">Enable notifications</button>
+  <button id="isAdminBtn" onclick="showLoginForm()">Is Admin</button>
+   
+  <div id="loginForm" style="display:none;">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
 
-    <button id="sendNotificationBtn" style="display:none;" onclick="sendNotification()">Send Notification</button>
+  <button id="sendNotificationBtn" style="display:none;" onclick="sendNotification()">Send Notification</button>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
