@@ -12,7 +12,7 @@ const apiKeys = {
 };
 
 webpush.setVapidDetails(
-  'mailto:goyalyash1605@gmail.com',
+  'mailto:gundeepsinhm@gmail.com',
   apiKeys.publicKey,
   apiKeys.privateKey
 );
@@ -28,7 +28,7 @@ async function connectToDb() {
     try {
       await client.connect();
       console.log("Connected to MongoDB Atlas");
-      db = client.db("tokens"); // Replace with your database name
+      db = client.db("device details"); // Replace with your database name
     } catch (error) {
       console.error("Error connecting to MongoDB:", error);
     }
