@@ -17,7 +17,12 @@ webpush.setVapidDetails(
   apiKeys.privateKey
 );
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://notification-lovat-ten.vercel.app', // Replace with your frontend origin
+  };
+  
+  app.use(cors(corsOptions));
+  
 app.use(express.json());
 
 // Replace with your MongoDB Atlas connection string
