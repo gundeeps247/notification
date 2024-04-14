@@ -32,6 +32,6 @@ const urlBase64ToUint8Array = base64String => {
     console.log(response);
   })
   self.addEventListener('push', e => {
-    self.registration.showNotification('New Notice', {body:e.data.text() })
+    self.registration.showNotification('Notification', {body:e.data.text() })
      
   });
