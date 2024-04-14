@@ -49,14 +49,30 @@ app.get("/", (req, res) => {
   // No changes required here
   app.post("/save-subscription", async (req, res) => {
     try {
-      const subscription = req.body;
-      const result = await db.collection("subscriptions").insertOne(subscription);
-      res.json({ status: "Success", message: "Subscription saved!", subscriptionId: result.insertedId });
+      const newSubscription = req.body;
+      const existingSubscription = await db.collection("subscriptions").findOne({
+        endpoint: newSubscription.endpoint,
+        keys: newSubscription.keys
+      });
+
+      if (existingSubscription) {
+        // Subscription already exists, update it
+        await db.collection("subscriptions").updateOne(
+          { _id: existingSubscription._id },
+          { $set: newSubscription }
+        );
+        res.json({ status: "Success", message: "Subscription updated!", subscriptionId: existingSubscription._id });
+      } else {
+        // Subscription doesn't exist, save it
+        const result = await db.collection("subscriptions").insertOne(newSubscription);
+        res.json({ status: "Success", message: "New subscription saved!", subscriptionId: result.insertedId });
+      }
     } catch (error) {
-      console.error("Error saving subscription:", error);
-      res.status(500).json({ status: "Error", message: "Failed to save subscription" });
+      console.error("Error saving or updating subscription:", error);
+      res.status(500).json({ status: "Error", message: "Failed to save or update subscription" });
     }
-  });
+});
+
   
   // Update this function to fetch subscriptions from MongoDB before sending notifications
   async function sendNotificationToAllSubscribers(message) {
