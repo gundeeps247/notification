@@ -42,7 +42,7 @@ if (event.data === 'skipWaiting') {
 }
 });
 
-self.addEventListener("activate",async (e) => {
+self.addEventListener("activate", async (e) => {
   try {
     const subscription = await self.registration.pushManager.subscribe({
       userVisibleOnly: true,
@@ -64,5 +64,17 @@ self.addEventListener('sync', function(event) {
 if (event.tag === 'syncData') {
   // Perform sync operation
   console.log('Background sync event received');
+}
+});
+
+// Retry activation if service worker stops
+self.addEventListener('statechange', function(event) {
+if (event.target.state === 'redundant') {
+  console.warn('Service worker redundant, attempting to register again...');
+  self.registration.unregister()
+    .then(() => self.clients.matchAll())
+    .then(clients => {
+      clients.forEach(client => client.navigate(client.url));
+    });
 }
 });
