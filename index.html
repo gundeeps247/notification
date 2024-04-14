@@ -3,20 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Ed-Connect</title>
+  <link rel="icon" href="book.ico" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <style>
+    body {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #001929;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    button {
+      margin-bottom: 15px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #loginForm {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #loginForm input {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    #loginForm button {
+      margin-top: 10px;
+    }
+  </style>
 </head>
-<body>
-  <button id="enableNotificationsBtn" onclick="enableNotifications()">Enable notifications</button>
-  <button id="isAdminBtn" onclick="showLoginForm()">Is Admin</button>
-   
-  <div id="loginForm" style="display:none;">
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+<body id="ranbir">
+  <noscript></noscript>
+  <div id="root"></div>
+  
+  <div class="buttons-container">
+    <button id="enableNotificationsBtn" onclick="enableNotifications()">Enable notifications</button>
+    <button id="isAdminBtn" onclick="showLoginForm()">Is Admin</button>
+    
+    <div id="loginForm" style="display:none;">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div>
+
+    <button id="sendNotificationBtn" style="display:none;" onclick="sendNotification()">Send Notification</button>
   </div>
 
-  <button id="sendNotificationBtn" style="display:none;" onclick="sendNotification()">Send Notification</button>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+  <script>
+    VANTA.WAVES({
+      el: '#ranbir',
+      color: 0x001929,
+      waveHeight: 20,
+      shininess: 50,
+      waveSpeed: .75,
+      zoom: 0.85
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
