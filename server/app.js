@@ -13,7 +13,7 @@ const apiKeys = {
 
 webpush.setVapidDetails(
   'mailto:gundeepsinhm@gmail.com',
-  apiKeys.publicKey,
+  apiKeys.publicKey, 
   apiKeys.privateKey
 );
 
