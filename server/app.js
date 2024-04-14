@@ -33,7 +33,7 @@ async function connectToDb() {
     try {
       await client.connect();
       console.log("Connected to MongoDB Atlas");
-      db = client.db("device details"); // Replace with your database name
+      db = client.db("college"); // Replace with your database name
     } catch (error) {
       console.error("Error connecting to MongoDB:", error);
     }
