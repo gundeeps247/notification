@@ -46,7 +46,7 @@ const checkPermission = () => {
   
   const sendNotification = async () => {
     // Send notification manually
-    const response = await fetch('https://notification-tznv.onrender.comsend-notification', {
+    const response = await fetch('https://notification-tznv.onrender.com/send-notification', {
       method: 'post',
       headers: { 'Content-type': "application/json" },
       body: JSON.stringify({ message: "New Notice from EdConnect Noticeboard!" })
@@ -73,7 +73,7 @@ const checkPermission = () => {
   
   // No changes required here as the subscription logic remains the same
   const saveSubscription = async (subscription) => {
-    const response = await fetch('https://notification-tznv.onrender.comsave-subscription', {
+    const response = await fetch('https://notification-tznv.onrender.com/save-subscription', {
       method: 'post',
       headers: { 'Content-type': "application/json" },
       body: JSON.stringify(subscription)
