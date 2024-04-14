@@ -18,7 +18,7 @@ webpush.setVapidDetails(
 );
 
 const corsOptions = {
-    origin: 'https://notification-psi-virid.vercel.app', // Replace with your frontend origin
+    origin: 'https://notification-zmvu.vercel.app', // Replace with your frontend origin
   };
   
   app.use(cors(corsOptions));
